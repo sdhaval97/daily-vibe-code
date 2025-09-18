@@ -1,0 +1,153 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+/* Header and Navbar */
+.header {
+    height: 80px; /* To prevent content jumping when nav becomes sticky */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: #333;
+    /* --- Bonus: Sticky Header --- */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+/* Logo */
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+/* Hamburger Menu (Mobile) */
+.hamburger {
+    display: block;
+    cursor: pointer;
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Navigation Menu */
+.nav-menu {
+    list-style: none;
+    position: fixed;
+    left: -100%;
+    top: 80px; /* Height of the navbar */
+    flex-direction: column;
+    background-color: #333;
+    width: 100%;
+    text-align: center;
+    /* --- Bonus: Animation --- */
+    transition: left 0.3s ease-out;
+}
+
+.nav-menu.active {
+    left: 0;
+}
+
+.nav-item {
+    padding: 1.5rem 0;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Hover States */
+.nav-link:hover {
+    color: #48a5f1;
+}
+
+/* Dropdown Menu (Hidden on Mobile by default) */
+.dropdown-menu {
+    display: none;
+    list-style: none;
+    background-color: #555;
+}
+
+.dropdown-menu li {
+    padding: 0.8rem 0;
+}
+
+/* --- Desktop View --- */
+@media only screen and (min-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+
+    .nav-menu {
+        position: static;
+        flex-direction: row;
+        width: auto;
+        left: 0;
+        background-color: transparent;
+        transition: none;
+    }
+
+    .nav-item {
+        padding: 0;
+        margin-left: 2rem;
+    }
+    
+    /* --- Bonus: Dropdown on Desktop --- */
+    .dropdown {
+        position: relative;
+    }
+    
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 25px; /* Position below the parent link */
+        left: -20px;
+        background-color: #333;
+        padding: 10px;
+        border-radius: 4px;
+        min-width: 150px;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu li {
+        padding: 0.5rem;
+    }
+}
